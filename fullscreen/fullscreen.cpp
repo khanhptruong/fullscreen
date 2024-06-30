@@ -2,6 +2,14 @@
 #include <Windows.h>
 #include <WinUser.h>
 
+// #define _WIN32_WINNT 0x0500
+
+void focusThis()
+{
+    HWND retVal = SetFocus(GetConsoleWindow());
+    if (retVal == NULL) std::cout << "Error, could not focus." << std::endl;
+}
+
 void sendFullscreenKeys()
 {
     std::cout << "Sending 'F11'" << std::endl;
@@ -39,6 +47,7 @@ void sendFullscreenKeys()
 int main()
 {
     std::cout << "Activiation Fullscreen..." << std::endl;
+    focusThis();
     sendFullscreenKeys();
     std::cout << "DONE" << std::endl;
     return 0;
